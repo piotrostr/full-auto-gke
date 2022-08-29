@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    name: api-deployment
+spec:
+  selector:
+    matchLabels:
+      name: api-deployment
+  template:
+    spec:
+      containers:
+        - name: api
+          image: piotrostr/api
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5

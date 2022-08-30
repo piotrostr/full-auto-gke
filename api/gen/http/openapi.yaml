@@ -1,0 +1,47 @@
+swagger: "2.0"
+info:
+    title: The hello-world API
+    description: A simple API that says hello
+    version: 0.1.0
+host: localhost:8080
+consumes:
+    - application/json
+    - application/xml
+    - application/gob
+produces:
+    - application/json
+    - application/xml
+    - application/gob
+paths:
+    /hello/{name}:
+        get:
+            tags:
+                - hello
+            summary: say-hello hello
+            operationId: hello#say-hello
+            parameters:
+                - name: name
+                  in: path
+                  description: The name to say hello to
+                  required: true
+                  type: string
+            responses:
+                "200":
+                    description: OK response.
+                    schema:
+                        type: string
+            schemes:
+                - http
+    /openapi.json:
+        get:
+            tags:
+                - hello
+            summary: Download ./gen/http/openapi.json
+            operationId: hello#/openapi.json
+            responses:
+                "200":
+                    description: File downloaded
+                    schema:
+                        type: file
+            schemes:
+                - http

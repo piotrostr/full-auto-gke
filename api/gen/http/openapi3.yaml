@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+    title: The hello-world API
+    description: A simple API that says hello
+    version: 0.1.0
+servers:
+    - url: http://localhost:8080
+paths:
+    /hello/{name}:
+        get:
+            tags:
+                - hello
+            summary: say-hello hello
+            operationId: hello#say-hello
+            parameters:
+                - name: name
+                  in: path
+                  description: The name to say hello to
+                  required: true
+                  schema:
+                    type: string
+                    description: The name to say hello to
+                    example: Distinctio dolor molestiae iure voluptatibus.
+                  example: Quia voluptate sit dolorem.
+            responses:
+                "200":
+                    description: OK response.
+                    content:
+                        application/json:
+                            schema:
+                                type: string
+                                example: Eaque et nisi quis.
+                            example: Veritatis occaecati sit porro.
+    /openapi.json:
+        get:
+            tags:
+                - hello
+            summary: Download ./gen/http/openapi.json
+            operationId: hello#/openapi.json
+            responses:
+                "200":
+                    description: File downloaded
+components: {}
+tags:
+    - name: hello
+      description: The hello service, it says hello

@@ -1,0 +1,27 @@
+// Code generated with goa v3.8.4, DO NOT EDIT.
+//
+// hello protocol buffer definition
+//
+// Command:
+// $ goa gen github.com/piotrostr/full-auto-gke/api/design
+
+syntax = "proto3";
+
+package hello;
+
+option go_package = "/hellopb";
+
+// The hello service, it says hello
+service Hello {
+	// SayHello implements say-hello.
+	rpc SayHello (SayHelloRequest) returns (SayHelloResponse);
+}
+
+message SayHelloRequest {
+	// The name to say hello to
+	string name = 1;
+}
+
+message SayHelloResponse {
+	string field = 1;
+}
